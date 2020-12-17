@@ -92,5 +92,3 @@ async def nine_nine(ctx):
     await ctx.send(response)
 
 bot.run(BOT_TOKEN)
-
-client.run(BOT_TOKEN)
