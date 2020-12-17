@@ -2,15 +2,19 @@ import discord
 import os
 
 client = discord.Client()
+BOT_TOKEN = "NzU4NDE5NzgyOTYxMzMyMjc1.X2urdw.RyvbayO1wgvnTeOZ78mHYMGBQAs"
+global washingMachine
 washingMachine = False
-washingMachineUser = ''
+global washingMachineUser
+washingMachineUser = ""
+global dryer 
 dryer = False
 
 def checkWasher():
-        if washingMachine == True:
-            return 'NO!'+ washingMachineUser + "is using it"
-        else:
-            return 'Yes :)'
+    if washingMachine == True:
+        return "No, "+ str(washingMachineUser) + " is using it"
+    else:
+        return 'Yes :)'
 
 @client.event
 async def on_ready():
@@ -18,6 +22,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global washingMachine 
+    global washingMachineUser 
+
     if message.author == client.user:
         return
 
@@ -30,23 +37,18 @@ async def on_message(message):
     if message.content.startswith('!dontopen') :
         await message.channel.send('dead inside')
 
-    if message.content.startswith("!usewasher"):
+
+    if message.content.startswith("!use"):
         await message.channel.send('Done')
         washingMachine = True
-        washingMachineUser = message.author
+        #print(message.author)
+        washingMachineUser= message.author
     
-    if message.content.startswith("!washerfree"):
+    if message.content.startswith("!free"):
         await message.channel.send(checkWasher())
 
-    if message.content.startswith("!finishwasher"):
+    if message.content.startswith("!finish"):
         await message.channel.send('Done')
         washingMachine = False
-  
-
-
         
-
-
-
-
-client.run("NzU4NDE5NzgyOTYxMzMyMjc1.X2urdw.i2M1uF_wuCwaanweMNaK4ZRmT2E")
+client.run(BOT_TOKEN)
