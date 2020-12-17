@@ -62,20 +62,12 @@ async def on_message(message):
         t0 = time.time()
 
     if message.content.startswith("!free"):
-        newTest()
-        await message.channel.send(checkWasher())
         await message.channel.send(check_washer())
 
     if message.content.startswith("!finish"):
         await message.channel.send('Done')
         washingMachine = False
 
-    #if message.content.startswith("!ring"):
-    #    doorBell(ctx)
-
-#@bot.command()
-#async def doorBell(ctx):
-#    await ctx.send('DING DONG')
 
 @bot.command(name='99')
 async def nine_nine(ctx):
