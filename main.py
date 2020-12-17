@@ -1,18 +1,21 @@
 import discord
 import os
+import time
 
 client = discord.Client()
 BOT_TOKEN = "NzU4NDE5NzgyOTYxMzMyMjc1.X2urdw.RyvbayO1wgvnTeOZ78mHYMGBQAs"
 global washingMachine
-washingMachine = False
-global washingMachineUser
-washingMachineUser = ""
 global dryer 
+global washingMachineUser
+
+washingMachine = False
+washingMachineUser = ""
 dryer = False
 
 def checkWasher():
+    global t0
     if washingMachine == True:
-        return "No, "+ str(washingMachineUser) + " is using it"
+        return "No, "+ str(washingMachineUser) + " is using it, " + str(round((2700 - (time.time() - t0))/60, 1)) + "mins left"
     else:
         return 'Yes :)'
 
@@ -24,6 +27,7 @@ async def on_ready():
 async def on_message(message):
     global washingMachine 
     global washingMachineUser 
+    global t0
 
     if message.author == client.user:
         return
@@ -43,6 +47,7 @@ async def on_message(message):
         washingMachine = True
         #print(message.author)
         washingMachineUser= message.author
+        t0 = time.time()
     
     if message.content.startswith("!free"):
         await message.channel.send(checkWasher())
@@ -50,5 +55,6 @@ async def on_message(message):
     if message.content.startswith("!finish"):
         await message.channel.send('Done')
         washingMachine = False
+        
         
 client.run(BOT_TOKEN)
