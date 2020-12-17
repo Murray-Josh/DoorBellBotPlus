@@ -53,5 +53,6 @@ async def on_ready():
     #await bot.change_presence(game=discord.Game(name='Cogs Example', type=1, url='https://twitch.tv/kraken'))
     print(f'Successfully logged in and booted...!')
 
-
-bot.run('NzU4NDE5NzgyOTYxMzMyMjc1.X2urdw.RyvbayO1wgvnTeOZ78mHYMGBQAs', bot=True, reconnect=True)
+tokenFile = open('token.txt')
+token = tokenFile.read()
+bot.run(token, bot=True, reconnect=True)
