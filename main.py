@@ -3,6 +3,8 @@ import os
 import time
 import random
 from discord.ext import commands
+from washer import *
+
 
 client = discord.Client()
 
