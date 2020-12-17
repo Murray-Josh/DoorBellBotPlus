@@ -3,11 +3,14 @@ import os
 import time
 import random
 from discord.ext import commands
-#bot = commands.Bot(command_prefix='!')
-#BOT_TOKEN = "NzU4NDE5NzgyOTYxMzMyMjc1.X2urdw.RyvbayO1wgvnTeOZ78mHYMGBQAs"
+class Washing():
+    def __init__(self, bot):
+        self.bot = bot
+    @bot.command(name='test')
+    async def washer_test(ctx):
+        await ctx.send("Testing")
 
-@bot.command(name='test')
-async def washer_test(ctx):
-    await ctx.send("Testing")
+def setup(bot):
+    bot.add_cog(Washing(bot))
 
-#bot.run(BOT_TOKEN)
+
