@@ -26,11 +26,6 @@ class Miscellaneous(commands.Cog):
         board = print_board()
         await ctx.send(board)
 
-    @tasks.loop(seconds=5.0)
-    async def printer(self):
-        print(self.index)
-        self.index += 1
-
 
 def setup(bot):
     bot.add_cog(Miscellaneous(bot))
