@@ -1,5 +1,6 @@
 from discord.ext import tasks, commands
 
+
 class Miscellaneous(commands.Cog):
 
     def __init__(self, bot):
