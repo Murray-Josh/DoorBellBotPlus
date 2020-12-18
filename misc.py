@@ -1,4 +1,5 @@
 from discord.ext import tasks, commands
+from tictactoe import print_board
 
 
 class Miscellaneous(commands.Cog):
@@ -19,6 +20,11 @@ class Miscellaneous(commands.Cog):
     @commands.command(name='misc')
     async def misc_function(self, ctx):
         await ctx.send('Well done, you\'ve called a misc function.')
+
+    @commands.command(name='tictactoe')
+    async def play_tic_tac_toe(self, ctx):
+        board = print_board()
+        await ctx.send(board)
 
     @tasks.loop(seconds=5.0)
     async def printer(self):
