@@ -3,20 +3,6 @@ from discord.ext import commands
 
 import sys, traceback
 
-"""This is a multi file example showcasing many features of the command extension and the use of cogs.
-These are examples only and are not intended to be used as a fully functioning bot. Rather they should give you a basic
-understanding and platform for creating your own bot.
-These examples make use of Python 3.6.2 and the rewrite version on the lib.
-For examples on cogs for the async version:
-https://gist.github.com/leovoel/46cd89ed6a8f41fd09c5
-Rewrite Documentation:
-http://discordpy.readthedocs.io/en/rewrite/api.html
-Rewrite Commands Documentation:
-http://discordpy.readthedocs.io/en/rewrite/ext/commands/api.html
-Familiarising yourself with the documentation will greatly help you in creating your bot and using cogs.
-"""
-
-
 def get_prefix(bot, message):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
 
@@ -53,6 +39,24 @@ async def on_ready():
     #await bot.change_presence(game=discord.Game(name='Cogs Example', type=1, url='https://twitch.tv/kraken'))
     print(f'Successfully logged in and booted...!')
 
+"""
+async def my_background_task():
+    #await bot.wait_until_ready()
+    counter = 0
+    channel = bot.get_channel(789226620821045278)
+    print("hellow")
+
+    while True:
+        print("hello in loop")
+
+        counter += 1
+        await bot.send_message(channel, counter)
+        await asyncio.sleep(3) 
+"""
+
 tokenFile = open('token.txt')
 token = tokenFile.read()
+#bot.bg_task = bot.loop.create_task(my_background_task())
 bot.run(token, bot=True, reconnect=True)
+
+#789159233861320727
