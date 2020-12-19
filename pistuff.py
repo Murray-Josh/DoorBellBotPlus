@@ -25,6 +25,7 @@ class PiBell(commands.Cog):
                 await channel.send("Bell has been rung")
                 self.led.on()
                 sleep(0.5)
+                self.led.off()
 
 
     @send_onready_message.before_loop  # wait for the client before starting the task
