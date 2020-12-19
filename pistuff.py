@@ -1,5 +1,5 @@
-import gpiozero
-from gpiozero import Button
+mport gpiozero
+from gpiozero import Button, LED
 
 from discord.ext import tasks, commands
 
@@ -9,17 +9,23 @@ class PiBell(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.x = 2
-        self.button = Button(self.x)
+        self.x = 4
+        self.button = Button(self.x,False,None)
+        self.led = LED(14)
+        print(self.button.pull_up)
         self.send_onready_message.start()
 
 
-    @tasks.loop()
+
+   @tasks.loop()
     async def send_onready_message(self):
         if self.button.is_pressed:
                 print("Button is pressed")
                 channel = self.bot.get_channel(int(789226620821045278))
-                await channel.send("Bell has been rung")  
+                await channel.send("Bell has been rung")
+                led.on()
+                sleep(0.5)
+
 
     @send_onready_message.before_loop  # wait for the client before starting the task
     async def before_send(self):
