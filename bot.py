@@ -20,7 +20,7 @@ def get_prefix(bot, message):
 
 # Below cogs represents our folder our cogs are in. Following is the file name. So 'meme.py' in cogs, would be cogs.meme
 # Think of it like a dot path import
-initial_extensions = ['members', 'b99', 'washer', 'misc', 'loop', 'pistuff']
+initial_extensions = ['members', 'b99', 'washer', 'misc', 'loop']
 
 bot = commands.Bot(command_prefix=get_prefix, description='A Rewrite Cog Example')
 
@@ -28,6 +28,11 @@ bot = commands.Bot(command_prefix=get_prefix, description='A Rewrite Cog Example
 if __name__ == '__main__':
     for extension in initial_extensions:
         bot.load_extension(extension)
+    try:
+        bot.load_extension('pistuff')
+    except:
+        print("No Pi Detected")
+
 
 @bot.event
 async def on_ready():

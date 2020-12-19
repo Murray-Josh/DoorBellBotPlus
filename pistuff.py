@@ -17,13 +17,13 @@ class PiBell(commands.Cog):
 
 
 
-   @tasks.loop()
+    @tasks.loop()
     async def send_onready_message(self):
         if self.button.is_pressed:
                 print("Button is pressed")
                 channel = self.bot.get_channel(int(789226620821045278))
                 await channel.send("Bell has been rung")
-                led.on()
+                #self.led.on()
                 sleep(0.5)
 
 
