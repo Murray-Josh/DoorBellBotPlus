@@ -1,4 +1,4 @@
-mport gpiozero
+import gpiozero
 from gpiozero import Button, LED
 
 from discord.ext import tasks, commands
