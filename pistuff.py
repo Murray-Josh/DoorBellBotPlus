@@ -21,7 +21,8 @@ class PiBell(commands.Cog):
     async def send_onready_message(self):
         if self.button.is_pressed:
                 print("Button is pressed")
-                channel = self.bot.get_channel(int(789226620821045278))
+                #channel = self.bot.get_channel(int(789226620821045278))
+                channel = bot.channels.find("Bell")
                 await channel.send("Bell has been rung")
                 self.led.on()
                 sleep(0.5)
