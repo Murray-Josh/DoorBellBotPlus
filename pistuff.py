@@ -23,7 +23,7 @@ class PiBell(commands.Cog):
         if self.button.is_pressed:
                 print("Button is pressed")
                 #channel = self.bot.get_channel(int(789226620821045278))
-                channel = self.bot.channels.find("Bell")
+                channel = self.bot.channels.find("bell")
                 await channel.send("Bell has been rung")
                 self.led.on()
                 self.buzzer.on()
