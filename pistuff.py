@@ -12,6 +12,7 @@ class PiBell(commands.Cog):
         self.x = 4
         self.button = Button(self.x,False,None)
         self.led = LED(14)
+        self.bell_channel_id = 789226620821045278
         self.buzzer = Buzzer(15)
         print(self.button.pull_up)
         self.send_onready_message.start()
@@ -22,8 +23,8 @@ class PiBell(commands.Cog):
     async def send_onready_message(self):
         if self.button.is_pressed:
                 print("Button is pressed")
-                #channel = self.bot.get_channel(int(789226620821045278))
-                channel = self.bot.channels.find("bell")
+                channel = self.bot.get_channel(int(self.bell_channel_id))
+                #channel = self.bot.channels.find("bell")
                 await channel.send("Bell has been rung")
                 self.led.on()
                 self.buzzer.on()
