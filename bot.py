@@ -58,7 +58,8 @@ async def my_background_task():
         await bot.send_message(channel, counter)
         await asyncio.sleep(3) 
 """
-
+def exit_handler():
+    print("Fin")
 tokenFile = open('token.txt')
 token = tokenFile.read()
 #bot.bg_task = bot.loop.create_task(my_background_task())
