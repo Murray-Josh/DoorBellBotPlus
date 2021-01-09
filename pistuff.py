@@ -38,7 +38,7 @@ class PiBell(commands.Cog):
     async def send_onready_message(self):
         if self.button.is_pressed and self.wait == False:
             self.led_working.color = Color('blue')
-            print("Button is pressed")
+            print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
             # channel = self.bot.channels.find("bell")
             await channel.send("Bell has been rung")
