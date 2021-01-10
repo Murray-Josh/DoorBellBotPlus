@@ -5,7 +5,7 @@ from gpiozero import Button, LED, Buzzer, RGBLED
 from colorzero import Color
 
 from discord.ext import tasks, commands
-
+import time
 from time import sleep
 
 
@@ -23,7 +23,7 @@ class PiBell(commands.Cog):
         print(self.button.pull_up)
         self.send_onready_message.start()
         self.reset_color_led.start()
-        self.wait = False
+        self.wait = 0
 
     @tasks.loop(seconds=5)
     async def reset_color_led(self):
@@ -36,18 +36,15 @@ class PiBell(commands.Cog):
 
     @tasks.loop()
     async def send_onready_message(self):
-        if self.button.is_pressed and self.wait == False:
+        if self.button.is_pressed and time.localtime() > self.wait + 30:
             self.led_working.color = Color('blue')
             print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
             # channel = self.bot.channels.find("bell")
-            await channel.send("@everyone Someone is at the door!")
+            await channel.send("everyone Someone is at the door!")
             self.led.on()
-            # self.buzzer.on()
-            sleep(0.5)
             self.led.off()
-            await asyncio.sleep(15)
-            # self.buzzer.off()
+            self.wait = time.time()
 
     @send_onready_message.before_loop  # wait for the client before starting the task
     async def before_send(self):
