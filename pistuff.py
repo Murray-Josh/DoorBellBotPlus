@@ -36,7 +36,7 @@ class PiBell(commands.Cog):
 
     @tasks.loop()
     async def send_onready_message(self):
-        if self.button.is_pressed and time.localtime() > self.wait + 30:
+        if self.button.is_pressed and time.time() > self.wait + 30:
             self.led_working.color = Color('blue')
             print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
