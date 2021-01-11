@@ -16,4 +16,4 @@ To fully utilise this program you will need a raspberry pi with access to the GP
 
 
 ## Circuit
-![Pi Circuit](circuit.png?raw=true "Title")
+![Pi Circuit](circuits.png?raw=true "Title")
