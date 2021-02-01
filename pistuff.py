@@ -40,8 +40,10 @@ class PiBell(commands.Cog):
             self.led_working.color = Color('blue')
             print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
-            # channel = self.bot.channels.find("bell")
+            # channel = self.bot.channels.find("bell"
+
             await channel.send("@everyone Someone is at the door!")
+            await channel.send(file=discord.File('my_file.png'))
             self.led.on()
             self.led.off()
             self.wait = time.time()
