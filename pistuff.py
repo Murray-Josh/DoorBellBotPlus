@@ -5,6 +5,7 @@ from gpiozero import Button, LED, Buzzer, RGBLED
 from colorzero import Color
 
 from discord.ext import tasks, commands
+import discord
 import time
 from time import sleep
 
@@ -25,10 +26,14 @@ class PiBell(commands.Cog):
         self.reset_color_led.start()
         self.wait = 0
 
+
     @tasks.loop(seconds=5)
     async def reset_color_led(self):
         self.led_working.color = Color('green')
-
+        #channel = self.bot.get_channel(int(self.bell_channel_id))
+        #with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
+        #    await channel.send(file=discord.File(fp, 'new_filename.png'))
+    
     @commands.command()
     async def command_color_led(self, ctx):
         print('command')
@@ -43,7 +48,8 @@ class PiBell(commands.Cog):
             # channel = self.bot.channels.find("bell"
 
             await channel.send("@everyone Someone is at the door!")
-            await channel.send(file=discord.File('my_file.png'))
+            #with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
+            #    await channel.send(file=discord.File(fp, 'new_filename.png'))
             self.led.on()
             self.led.off()
             self.wait = time.time()
