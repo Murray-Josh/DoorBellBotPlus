@@ -46,7 +46,7 @@ class PiBell(commands.Cog):
             print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
             ringTime = str(round(time.time()))
-            self.fTime.write(ringTime + "\n")
+            self.fTime.write("\n" + ringTime)
             self.fTime.close()
             await channel.send("@everyone Someone is at the door! - " + ringTime)
             #with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
