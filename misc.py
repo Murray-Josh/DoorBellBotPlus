@@ -24,7 +24,7 @@ class Miscellaneous(commands.Cog):
 
     @commands.command(name='setring')
     async def set_ring(self, ctx,arg, arg2):
-        ftime = open("SwanData.txt.txt", "r")
+        ftime = open("SwanData.txt", "r")
         found = False
         lineNum = 0
         listOfLines = []
