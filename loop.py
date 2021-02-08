@@ -22,11 +22,11 @@ class Loop(commands.Cog):
 
         return
 
-    @send_onready_message.after_loop  # destroy the task once it's done
-    async def after_send(self):
-        self.send_onready_message.close()
+    #@send_onready_message.after_loop  # destroy the task once it's done
+    #async def after_send(self):
+    #    self.send_onready_message.close()
 
-        return
+    #    return
 
     @commands.command(name='loop')
     async def misc_function(self, ctx):
