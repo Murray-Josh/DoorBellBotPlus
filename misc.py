@@ -32,9 +32,10 @@ class Miscellaneous(commands.Cog):
             listOfLines.append(line)
             lineNum += 1
             values = line.split()
-            if values[0] == arg:
-                found = True
-                listOfLines[lineNum] = str(values[0] +" " +arg2)
+            for v in values:
+                if v == arg:
+                    found = True
+                    listOfLines[lineNum] = str(values[0] +" " +arg2)
         if found:
             ftime.writelines(listOfLines)
             ftime.close()
