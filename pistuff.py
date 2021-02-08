@@ -25,7 +25,7 @@ class PiBell(commands.Cog):
         self.send_onready_message.start()
         self.reset_color_led.start()
         self.wait = 0
-
+        self.fTime = open("SwanData.txt", "a")
 
     @tasks.loop(seconds=5)
     async def reset_color_led(self):
@@ -45,9 +45,9 @@ class PiBell(commands.Cog):
             self.led_working.color = Color('blue')
             print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
-            # channel = self.bot.channels.find("bell"
-
-            await channel.send("@everyone Someone is at the door!")
+            ringTime = str(round(time.time()))
+            self.fTime.write(ringTime + "\n")
+            await channel.send("@everyone Someone is at the door! - " + ringTime)
             #with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
             #    await channel.send(file=discord.File(fp, 'new_filename.png'))
             self.led.on()
@@ -66,9 +66,12 @@ class PiBell(commands.Cog):
 
         return
 
-    def exit_handler():
+    def exit_handler(self):
         self.led_working.off()
 
+    @commands.command(name='dontdead')
+    async def dont_dead(self, ctx):
+        await ctx.send('Open inside.')
 
 def setup(bot):
     bot.add_cog(PiBell(bot))
