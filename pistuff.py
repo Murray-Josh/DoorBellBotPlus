@@ -61,18 +61,14 @@ class PiBell(commands.Cog):
 
         return
 
-    #send_onready_message.after_loop  # destroy the task once it's done
-    #sync def after_send(self):
-    #    self.send_onready_message.close()
+    @send_onready_message.after_loop  # destroy the task once it's done
+    async def after_send(self):
+        self.send_onready_message.close()
 
-    #    return
+        return
 
     def exit_handler(self):
         self.led_working.off()
-
-    @commands.command(name='dontdead')
-    async def dont_dead(self, ctx):
-        await ctx.send('Open inside.')
 
 def setup(bot):
     bot.add_cog(PiBell(bot))
