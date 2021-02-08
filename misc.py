@@ -24,11 +24,12 @@ class Miscellaneous(commands.Cog):
 
     @commands.command(name='setring')
     async def set_ring(self, ctx,arg, arg2):
-        ftime = open("SwanData.txt", "r")
+        ftimeread = open("SwanData.txt", "r")
+        ftimewrite = open("SwanData.txt", "w")
         found = False
         lineNum = 0
         listOfLines = []
-        for line in ftime:
+        for line in ftimeread:
             listOfLines.append(line)
 
             values = line.split()
@@ -38,8 +39,8 @@ class Miscellaneous(commands.Cog):
                     listOfLines[lineNum] = str(values[0] +" " +arg2)
             lineNum += 1
         if found:
-            ftime.writelines(listOfLines)
-            ftime.close()
+            ftimewrite.writelines(listOfLines)
+            ftimewrite.close()
             await ctx.send("Found and renamed")
 
         else:
