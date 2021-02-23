@@ -30,12 +30,11 @@ class Miscellaneous(commands.Cog):
         listOfLines = []
         for line in ftimeread:
             listOfLines.append(line)
-
             values = line.split()
             for v in values:
                 if v == arg:
                     found = True
-                    listOfLines[lineNum] = str(values[0] +" " +arg2)
+                    listOfLines[lineNum] = str(values[0] + " " + str(arg2).lower())
             lineNum += 1
         if found:
             ftimewrite = open("SwanData.txt", "w")
