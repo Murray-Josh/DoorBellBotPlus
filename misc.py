@@ -39,11 +39,10 @@ class Miscellaneous(commands.Cog):
             ftimewrite = open("SwanData.txt", "w")
             ftimewrite.writelines(listOfLines)
             ftimewrite.close()
-            await ctx.send("Found and renamed")
-
+            await ctx.react('👍')
         else:
-            await ctx.send("Time not found :(")
-            print(ctx)
+            await ctx.react('👎')
+
 
 
 
