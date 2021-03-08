@@ -20,7 +20,7 @@ def get_prefix(bot, message):
 
 
 
-initial_extensions = ['members', 'washer', 'misc', 'loop']
+initial_extensions = ['washer', 'misc', 'loop']
 
 bot = commands.Bot(command_prefix=get_prefix, description='A Rewrite Cog Example')
 
