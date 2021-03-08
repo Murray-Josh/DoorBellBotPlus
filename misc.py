@@ -42,6 +42,7 @@ class Miscellaneous(commands.Cog):
             print(ctx.message)
             await ctx.message.add_reaction('👍')
         else:
+            print(ctx.message)
             await ctx.message.add_reaction('👎')
 
 
