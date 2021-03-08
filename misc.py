@@ -39,6 +39,7 @@ class Miscellaneous(commands.Cog):
             ftimewrite = open("SwanData.txt", "w")
             ftimewrite.writelines(listOfLines)
             ftimewrite.close()
+            print(ctx.message)
             await ctx.message.add_reaction('👍')
         else:
             await ctx.message.add_reaction('👎')
