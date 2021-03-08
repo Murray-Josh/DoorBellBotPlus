@@ -30,10 +30,10 @@ class PiBell(commands.Cog):
     @tasks.loop(seconds=5)
     async def reset_color_led(self):
         self.led_working.color = Color('green')
-        #channel = self.bot.get_channel(int(self.bell_channel_id))
-        #with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
+        # channel = self.bot.get_channel(int(self.bell_channel_id))
+        # with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
         #    await channel.send(file=discord.File(fp, 'new_filename.png'))
-    
+
     @commands.command()
     async def command_color_led(self, ctx):
         print('command')
@@ -50,7 +50,7 @@ class PiBell(commands.Cog):
             self.fTime.write("\n" + ringTime)
             self.fTime.close()
             await channel.send("@everyone Someone is at the door! - " + ringTime)
-            #with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
+            # with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
             #    await channel.send(file=discord.File(fp, 'new_filename.png'))
             self.led.on()
             self.led.off()
@@ -62,14 +62,9 @@ class PiBell(commands.Cog):
 
         return
 
-    @send_onready_message.after_loop  # destroy the task once it's done
-    async def after_send(self):
-        self.send_onready_message.close()
-
-        return
-
     def exit_handler(self):
         self.led_working.off()
+
 
 def setup(bot):
     bot.add_cog(PiBell(bot))

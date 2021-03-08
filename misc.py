@@ -2,6 +2,7 @@ from discord.ext import tasks, commands
 from tictactoe import print_board
 import fileinput
 
+
 class Miscellaneous(commands.Cog):
 
     def __init__(self, bot):
@@ -22,7 +23,7 @@ class Miscellaneous(commands.Cog):
         await ctx.send(board)
 
     @commands.command(name='setring')
-    async def set_ring(self, ctx,arg, arg2):
+    async def set_ring(self, ctx, arg, arg2):
         ftimeread = open("SwanData.txt", "r")
         found = False
         lineNum = 0
@@ -42,9 +43,6 @@ class Miscellaneous(commands.Cog):
             await ctx.message.add_reaction('👍')
         else:
             await ctx.message.add_reaction('👎')
-
-
-
 
 
 def setup(bot):

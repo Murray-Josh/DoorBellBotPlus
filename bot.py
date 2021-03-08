@@ -4,6 +4,7 @@ from discord.ext import commands
 
 import sys, traceback
 
+
 def get_prefix(bot, message):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
 
@@ -17,7 +18,6 @@ def get_prefix(bot, message):
 
     # If we are in a guild, we allow for the user to mention us or use any of the prefixes in our list.
     return commands.when_mentioned_or(*prefixes)(bot, message)
-
 
 
 initial_extensions = ['washer', 'misc', 'loop']
@@ -44,9 +44,11 @@ async def on_ready():
 
 def exit_handler():
     print("Fin")
+
+
 tokenFile = open('token.txt')
 token = tokenFile.read()
-#bot.bg_task = bot.loop.create_task(my_background_task())
+# bot.bg_task = bot.loop.create_task(my_background_task())
 bot.run(token, bot=True, reconnect=True)
 
-#789159233861320727
+# 789159233861320727

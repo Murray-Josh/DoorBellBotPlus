@@ -23,8 +23,9 @@ class Washing(commands.Cog):
     @commands.command(name='free')
     async def free_washer(self, ctx):
         if self.washingMachine:
-            await ctx.send("No, " + str(self.washing_machine_user) + " is using it, " + 
-            str(round((self.washer_time_to_complete - (time.time() - self.washTime)) / 60, 1)) + "minutes left")
+            await ctx.send("No, " + str(self.washing_machine_user) + " is using it, " +
+                           str(round((self.washer_time_to_complete - (time.time() - self.washTime)) / 60,
+                                     1)) + "minutes left")
         else:
             await ctx.send('Yes :)')
 
@@ -37,18 +38,16 @@ class Washing(commands.Cog):
         self.washingMachine = False
         await ctx.send('Done')
 
-
-    @tasks.loop(seconds = 5)
+    @tasks.loop(seconds=5)
     async def is_washer_done(self):
         if round((self.washer_time_to_complete - (time.time() - self.washTime)) / 60, 1) <= 0:
             channel = self.bot.get_channel(int(789226620821045278))
 
-            await channel.send(self.washing_machine_user.mention 
-            + " your washing is done")
+            await channel.send(self.washing_machine_user.mention
+                               + " your washing is done")
             self.is_washer_done.stop()
             self.washingMachine = False
 
 
-            
 def setup(bot):
     bot.add_cog(Washing(bot))
