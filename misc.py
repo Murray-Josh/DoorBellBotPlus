@@ -7,7 +7,6 @@ class Miscellaneous(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.index = 0
-        # bot.bg_task = bot.loop.create_task(Miscellaneous.my_background_task())
 
     @commands.command(name='dontdead')
     async def dont_dead(self, ctx):
@@ -44,6 +43,8 @@ class Miscellaneous(commands.Cog):
 
         else:
             await ctx.send("Time not found :(")
+            print(ctx)
+
 
 
 

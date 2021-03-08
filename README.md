@@ -1,6 +1,7 @@
 # Doorbell Bot Plus
 
 A house management bot for discord.
+bot.py mostly taken from https://gist.github.com/Choco02/e40acf5484c72bbf1915cb415b2044cf
 
 ## Requirements
 
