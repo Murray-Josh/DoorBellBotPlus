@@ -47,7 +47,7 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=19, minute=19, second=40)
+        tuesdayNight = dt.replace(hour=19, minute=21, second=00)
         print(tuesdayNight)
         print(dt)
         if dt.weekday() == 3:
@@ -58,13 +58,14 @@ class PiBell(commands.Cog):
                 wBinDay = open("BinDay.txt", "w")
                 rBinDay = open("BinDay.txt", "w")
 
-                channel = self.bot.get_channel(int(789234070361997333))
+                channel = self.bot.get_channel(789234070361997333)
                 await channel.send("@everyone have the bins been done it's" + rBinDay.read() + "week")
                 if rBinDay.read() == "green":
                     wBinDay.write("blue")
                 else:
                     wBinDay.write("green")
-
+                rBinDay.close()
+                wBinDay.close()
                 time.sleep(1)
 
 
