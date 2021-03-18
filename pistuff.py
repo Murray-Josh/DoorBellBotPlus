@@ -47,14 +47,14 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=19, minute=27, second=15)
+        tuesdayNight = dt.replace(hour=19, minute=28, second=15)
 
         if dt.weekday() == 3:
 
             if dt == tuesdayNight:
                 wBinDay = open("BinDay.txt", "w")
                 rBinDay = open("BinDay.txt", "w")
-                print("working time" + rBinDay.read())
+                print("working time" )
 
                 channel = self.bot.get_channel(int(self.bell_channel_id))
                 await channel.send("@everyone have the bins been done it's" + rBinDay.read() + "week")
