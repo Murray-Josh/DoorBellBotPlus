@@ -48,11 +48,11 @@ class PiBell(commands.Cog):
         dt = datetime.datetime.now()
         print(dt.weekday())
         print(dt.time())
-        tuesdayNight = dt.replace(hour=18, minute=49, second=0, microsecond=0)
+        tuesdayNight = dt.replace(hour=18, minute=50, second=0, microsecond=0)
         if dt.weekday() == 3:
             print("working day")
 
-            if dt.time() == datetime.time(18, 48):
+            if dt == tuesdayNight:
                 print("working time")
                 channel = self.bot.get_channel(int(self.bell_channel_id))
                 await channel.send("@everyone have the bins been done")
