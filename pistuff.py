@@ -7,6 +7,9 @@ from colorzero import Color
 from discord.ext import tasks, commands
 import discord
 import time
+from datetime import date
+import datetime
+
 from time import sleep
 
 
@@ -41,6 +44,11 @@ class PiBell(commands.Cog):
 
     @tasks.loop()
     async def send_onready_message(self):
+        if date.today().weekday() == 4:
+            if datetime.time() == datetime.time(18,40):
+                channel = self.bot.get_channel(int(self.bell_channel_id))
+                await channel.send("@everyone have the bins been done")
+
         if self.button.is_pressed and time.time() > self.wait + 30:
             self.fTime = open("SwanData.txt", "a")
             self.led_working.color = Color('blue')
