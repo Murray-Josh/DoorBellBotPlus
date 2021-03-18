@@ -50,7 +50,6 @@ class PiBell(commands.Cog):
         tuesdayNight = dt.replace(hour=19, minute=26, second=15)
 
         if dt.weekday() == 3:
-            print("working day")
 
             if dt == tuesdayNight:
                 wBinDay = open("BinDay.txt", "w")
