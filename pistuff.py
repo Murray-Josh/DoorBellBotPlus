@@ -46,9 +46,10 @@ class PiBell(commands.Cog):
     async def send_onready_message(self):
 
         dt = datetime.datetime.now()
-        print(dt.weekday())
-        print(dt.time())
-        tuesdayNight = dt.replace(hour=18, minute=50, second=0, microsecond=0)
+
+        tuesdayNight = dt.replace(hour=18, minute=50, second=0)
+        print(tuesdayNight)
+        print(dt)
         if dt.weekday() == 3:
             print("working day")
 
