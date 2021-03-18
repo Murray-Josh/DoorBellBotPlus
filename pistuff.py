@@ -60,7 +60,7 @@ class PiBell(commands.Cog):
                 print("working time" )
 
                 channel = self.bot.get_channel(int(self.bell_channel_id))
-                await channel.send("everyone have the bins been done it's" + colourTxt + "week")
+                await channel.send("@everyone have the bins been done it's" + colourTxt + "week")
 
 
                 time.sleep(2)
