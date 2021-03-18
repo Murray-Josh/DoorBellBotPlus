@@ -47,26 +47,32 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=18, minute=59, second=40)
+        tuesdayNight = dt.replace(hour=22, minute=00, second=00)
         print(tuesdayNight)
         print(dt)
-        if dt.weekday() == 3:
+        if dt.weekday() == 1:
             print("working day")
 
             if dt == tuesdayNight:
                 print("working time")
                 time.sleep(1)
+                wBinDay = open("BinDay.txt", "w")
+                rBinDay = open("BinDay.txt", "w")
 
-                channel = self.bot.get_channel(int(self.bell_channel_id))
-                await channel.send("@everyone have the bins been done")
+                channel = self.bot.get_channel(int(789234070361997333))
+                await channel.send("@everyone have the bins been done it's" + rBinDay.read() + "week")
+                if rBinDay.read() == "green":
+                    wBinDay.write("blue")
+                else:
+                    wBinDay.write("green")
 
         if self.button.is_pressed and time.time() > self.wait + 30:
-            self.fTime = open("SwanData.txt", "a")
+            fTime = open("SwanData.txt", "a")
             self.led_working.color = Color('blue')
             print("@everyone Someone is at the door!")
             channel = self.bot.get_channel(int(self.bell_channel_id))
             ringTime = str(round(time.time()))
-            self.fTime.write("\n" + ringTime)
+            fTime.write("\n" + ringTime)
             self.fTime.close()
             await channel.send("@everyone Someone is at the door! - " + ringTime)
             # with open('/media/pi/8bcf7aa7-4478-493c-a2e9-d0bb42a49e45/Images/saved_img-final.jpg', 'rb') as fp:
