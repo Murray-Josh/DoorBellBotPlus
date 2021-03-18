@@ -47,7 +47,7 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=18, minute=58, second=0)
+        tuesdayNight = dt.replace(hour=18, minute=58, second=30)
         time.sleep(0.1)
         print(tuesdayNight)
         print(dt)
