@@ -44,10 +44,12 @@ class PiBell(commands.Cog):
 
     @tasks.loop()
     async def send_onready_message(self):
-        print(date.today())
-        print(datetime.time())
-        if date.today().weekday() == 4:
-            if datetime.time() == datetime.time(18,40):
+
+        dt = datetime.datetime.now()
+        print(dt.weekday())
+        print(dt.time())
+        if dt.weekday() == 4:
+            if dt.time() == datetime.time(18,43,00):
                 channel = self.bot.get_channel(int(self.bell_channel_id))
                 await channel.send("@everyone have the bins been done")
 
