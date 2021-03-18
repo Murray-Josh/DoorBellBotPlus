@@ -47,24 +47,23 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=19, minute=30, second=15)
+        tuesdayNight = dt.replace(hour=22, minute=14, second=15)
 
         if dt.weekday() == 3:
 
             if dt == tuesdayNight:
-                wBinDay = open("BinDay.txt", "w")
-                rBinDay = open("BinDay.txt", "w")
+                weekNumber = date.today().isocalendar()[1]
+                if weekNumber %2 == 0:
+                    colourTxt = "green"
+                else:
+                    colourTxt = "blue"
                 print("working time" )
 
                 channel = self.bot.get_channel(int(self.bell_channel_id))
-                await channel.send("@everyone have the bins been done it's" + rBinDay.read() + "week")
-                if rBinDay.read() == "green":
-                    wBinDay.write("blue")
-                else:
-                    wBinDay.write("green")
-                rBinDay.close()
-                wBinDay.close()
-                time.sleep(1)
+                await channel.send("everyone have the bins been done it's" + colourTxt + "week")
+
+
+                time.sleep(2)
 
 
         if self.button.is_pressed and time.time() > self.wait + 30:
