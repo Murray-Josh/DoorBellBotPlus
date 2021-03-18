@@ -47,16 +47,16 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=22, minute=14, second=15)
+        tuesdayNight = dt.replace(hour=22, minute=0, second=0)
 
-        if dt.weekday() == 3:
+        if dt.weekday() == 2:
 
             if dt == tuesdayNight:
                 weekNumber = date.today().isocalendar()[1]
                 if weekNumber %2 == 0:
-                    colourTxt = "green"
+                    colourTxt = " green "
                 else:
-                    colourTxt = "blue"
+                    colourTxt = " black "
                 print("working time" )
 
                 channel = self.bot.get_channel(int(self.bell_channel_id))
