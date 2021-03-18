@@ -47,10 +47,10 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=19, minute=17, second=00)
+        tuesdayNight = dt.replace(hour=19, minute=18, second=00)
         print(tuesdayNight)
         print(dt)
-        if dt.weekday() == 1:
+        if dt.weekday() == 3:
             print("working day")
 
             if dt == tuesdayNight:
