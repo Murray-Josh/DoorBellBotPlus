@@ -48,8 +48,8 @@ class PiBell(commands.Cog):
         dt = datetime.datetime.now()
         print(dt.weekday())
         print(dt.time())
-        if dt.weekday() == 4:
-            if dt.time() == datetime.time(18,43,00):
+        if dt.weekday() == 3:
+            if dt.time() == datetime.time(18,44,00):
                 channel = self.bot.get_channel(int(self.bell_channel_id))
                 await channel.send("@everyone have the bins been done")
 
