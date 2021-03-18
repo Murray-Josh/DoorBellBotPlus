@@ -44,6 +44,8 @@ class PiBell(commands.Cog):
 
     @tasks.loop()
     async def send_onready_message(self):
+        print(date.today())
+        print(datetime.time())
         if date.today().weekday() == 4:
             if datetime.time() == datetime.time(18,40):
                 channel = self.bot.get_channel(int(self.bell_channel_id))
