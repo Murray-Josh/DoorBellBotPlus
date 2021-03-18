@@ -47,7 +47,7 @@ class PiBell(commands.Cog):
 
         dt = datetime.datetime.now()
 
-        tuesdayNight = dt.replace(hour=19, minute=18, second=00)
+        tuesdayNight = dt.replace(hour=19, minute=19, second=00)
         print(tuesdayNight)
         print(dt)
         if dt.weekday() == 3:
@@ -55,7 +55,6 @@ class PiBell(commands.Cog):
 
             if dt == tuesdayNight:
                 print("working time")
-                time.sleep(1)
                 wBinDay = open("BinDay.txt", "w")
                 rBinDay = open("BinDay.txt", "w")
 
@@ -65,6 +64,9 @@ class PiBell(commands.Cog):
                     wBinDay.write("blue")
                 else:
                     wBinDay.write("green")
+
+                time.sleep(1)
+
 
         if self.button.is_pressed and time.time() > self.wait + 30:
             fTime = open("SwanData.txt", "a")
