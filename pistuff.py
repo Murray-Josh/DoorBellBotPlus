@@ -49,22 +49,20 @@ class PiBell(commands.Cog):
 
         tuesdayNight = dt.replace(hour=22, minute=0, second=0)
 
-        if dt.weekday() == 2:
+        if dt.weekday() == 1:
 
             if dt == tuesdayNight:
                 weekNumber = date.today().isocalendar()[1]
-                if weekNumber %2 == 0:
+                if weekNumber % 2 == 0:
                     colourTxt = " green "
                 else:
                     colourTxt = " black "
-                print("working time" )
+                print("working time")
 
                 channel = self.bot.get_channel(int(self.bell_channel_id))
                 await channel.send("@everyone have the bins been done it's" + colourTxt + "week")
 
-
                 time.sleep(2)
-
 
         if self.button.is_pressed and time.time() > self.wait + 30:
             fTime = open("SwanData.txt", "a")
