@@ -44,6 +44,28 @@ class Miscellaneous(commands.Cog):
         else:
             await ctx.message.add_reaction('👎')
 
+    @commands.command(aliases=['setring', 'setstring', 'setbell'])
+    async def set_ring(self, ctx, arg, arg2):
+        ftimeread = open("SwanData.txt", "r")
+        found = False
+        lineNum = 0
+        listOfLines = []
+        for line in ftimeread:
+            listOfLines.append(line)
+            values = line.split()
+            for v in values:
+                if v == arg:
+                    found = True
+                    listOfLines[lineNum] = str(values[0] + " " + str(arg2).lower())
+            lineNum += 1
+        if found:
+            ftimewrite = open("SwanData.txt", "w")
+            ftimewrite.writelines(listOfLines)
+            ftimewrite.close()
+            await ctx.message.add_reaction('👍')
+        else:
+            await ctx.message.add_reaction('👎')
+
 
 def setup(bot):
     bot.add_cog(Miscellaneous(bot))
